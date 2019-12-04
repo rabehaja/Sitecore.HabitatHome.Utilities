@@ -47,9 +47,9 @@ $assets.certificatesPath = Join-Path $assets.sharedUtilitiesRoot "Certificates"
 Write-Host "Setting default 'Site' parameters"
 # Site Settings
 $site = $json.settings.site
-$site.prefix = "habitathome"
+$site.prefix = "sxa-training"
 $site.suffix = "dev.local"
-$site.webroot = "C:\inetpub\wwwroot"
+$site.webroot = "D:\Websites\"
 $site.hostName = $json.settings.site.prefix + "." + $json.settings.site.suffix
 $site.addSiteBindingWithSSLPath = (Get-ChildItem $assets.sharedUtilitiesRoot -filter "add-new-binding-and-certificate.json" -Recurse).FullName
 
@@ -58,10 +58,10 @@ Write-Host "Setting default 'SQL' parameters"
 $sql = $json.settings.sql
 # SQL Settings
 
-$SqlSaPassword = "Str0NgPA33w0rd!!"
+$SqlSaPassword = "P@ssw0rd"
 $SqlStrongPassword = $SqlSaPassword # Used for all other services
 
-$sql.server = "."
+$sql.server = "PC376\MSSQLSERVER2017"
 $sql.adminUser = "sa"
 $sql.adminPassword = $SqlSaPassword
 $sql.userPassword = $SqlStrongPassword
@@ -128,9 +128,9 @@ $identityServer.clientSecret = "ClientSecret"
 Write-Host "Setting default 'Solr' parameters"
 # Solr Parameters
 $solr = $json.settings.solr
-$solr.url = "https://localhost:8750/solr"
-$solr.root = "c:\solr"
-$solr.serviceName = "Solr"
+$solr.url = "https://localhost:8983/solr"
+$solr.root = "D:\SOLR\solr-7.7.1"
+$solr.serviceName = "SOLR Engine 7.7.1"
 
 Write-Host ("Saving Configuration file to {0}" -f $ConfigurationFile)
 
